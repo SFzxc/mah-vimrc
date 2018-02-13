@@ -11,8 +11,8 @@ $ git clone https://github.com/SFzxc/mah-vimrc.git
 $ cp mah-vimrc/vimrc ~/.vimrc
 
 $ vim
-				:PluginInstall
-				:q!
+    :PluginInstall
+    :q!
 ```
 
 ## Infors
