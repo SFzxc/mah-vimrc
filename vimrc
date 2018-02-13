@@ -3,13 +3,18 @@ set shell=/bin/bash
 syntax on
 
 set number
-set backspace=indent,eol,start                 " delete by backspace
-set tabstop=2                                  " number of visual spaces per TAB
-set tags=./tags;                               " Set tags directory
-set autoindent                                 " Auto indention should be on
+set backspace=indent,eol,start          " delete by backspace
+set tabstop=2                           " number of visual spaces per TAB
+set tags=./tags;                        " Set tags directory
+set autoindent                          " Auto indention should be on
 set nowrap
-set wildmenu                                   " visual autocomplete for command menu
+set wildmenu                            " visual autocomplete for command menu
 set lazyredraw
+set hlsearch                            " Searching
+set incsearch
+set smartcase
+set laststatus=2
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/* " Tap completion
 
 " Ruby hash syntax conversion
 nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
@@ -51,20 +56,8 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 " Auto remove trailing whitespace and spaces when save
 autocmd BufWritePre *.rb %s/\s\+$//e
 
-" My leader key
+" Leader key
 let mapleader=","
-
-" Searching
-set hlsearch
-
-set incsearch
-
-set smartcase
-
-set laststatus=2
-
-" Tap completion
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 
 " Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
