@@ -8,7 +8,7 @@ set tabstop=2                                  " number of visual spaces per TAB
 set tags=./tags;                               " Set tags directory
 set autoindent                                 " Auto indention should be on
 set nowrap
-set wildmenu                                   " visual autocomplete for command menu"
+set wildmenu                                   " visual autocomplete for command menu
 set lazyredraw
 
 " Ruby hash syntax conversion
