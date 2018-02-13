@@ -6,6 +6,9 @@ My .vimrc file for Ruby development
 
 ## Setup
 
+iTerm2 Material Design
+https://github.com/MartinSeeler/iterm2-material-design
+
 ```
 $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 $ git clone https://github.com/SFzxc/mah-vimrc.git
