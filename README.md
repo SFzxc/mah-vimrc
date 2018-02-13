@@ -2,6 +2,8 @@
 
 My .vimrc file for Ruby development
 
+https://github.com/SFzxc/mah-vimrc/blob/master/screenshot.png
+
 ## Setup
 
 ```
