@@ -4,8 +4,12 @@ syntax on
 
 set number
 set backspace=indent,eol,start          " delete by backspace
-set tabstop=2                           " number of visual spaces per TAB
 set tags=./tags;                        " Set tags directory
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 set autoindent                          " Auto indention should be on
 set nowrap
 set wildmenu                            " visual autocomplete for command menu
@@ -14,7 +18,10 @@ set hlsearch                            " Searching
 set incsearch
 set smartcase
 set laststatus=2
+set noshowmatch
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/* " Tap completion
+
+let loaded_matchparen = 1
 
 " Ruby hash syntax conversion
 nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
@@ -31,7 +38,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-rails.git'
-Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'tomasr/molokai'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-surround'
@@ -41,6 +48,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-dispatch'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype plugin indent on
@@ -50,8 +58,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Show trailing whitespace and spaces before a tab:
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
 " Auto remove trailing whitespace and spaces when save
 autocmd BufWritePre *.rb %s/\s\+$//e
@@ -73,10 +81,10 @@ map <leader>t :A<CR> " \t to jump to test file
 map <leader>r :r<cr> " \t to jump to related file
 
 " Don't be a noob, join the no arrows key movement
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
+" inoremap  <Up>     <NOP>
+" inoremap  <Down>   <NOP>
+" inoremap  <Left>   <NOP>
+" inoremap  <Right>  <NOP>
 noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
@@ -97,9 +105,6 @@ vno v <esc>
 
 " Opens and closes Nerdtree with ,q
 map <leader>q :NERDTreeToggle<CR>
-
-" Every copy and paste will interact with system cliboard
-set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""
 " BACKUP / TMP FILES
