@@ -61,6 +61,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomlion/vim-solidity'
 
+call vundle#end()
+
 filetype plugin indent on
 
 " open NERDTree automatically when vim starts up on opening a directory
