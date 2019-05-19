@@ -44,6 +44,9 @@ set laststatus=2
 set noshowmatch
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/* " Tap completion
 
+" Toggle relative line number
+nmap <C-L><C-L> :set invrelativenumber<CR>
+
 " Off shit bell
 set belloff=all
 
@@ -62,12 +65,11 @@ command! Bd bd
 let loaded_matchparen = 1
 
 let Tlist_Ctags_Cmd='/location/ctags'
-
 " Ruby hash syntax conversion
 nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
-
 set nocompatible
 filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -91,6 +93,7 @@ Plugin 'tomlion/vim-solidity'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'chr4/nginx.vim'
 
 call vundle#end()
 
@@ -149,6 +152,10 @@ autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType tex              let b:comment_leader = '% '
 autocmd FileType mail             let b:comment_leader = '> '
 autocmd FileType vim              let b:comment_leader = '" '
+
+" Close QuickFix Files List after selecting
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
