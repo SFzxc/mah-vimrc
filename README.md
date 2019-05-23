@@ -55,4 +55,3 @@ $ vim
 - https://github.com/tpope/vim-dispatch (Asynchronous build and test dispatcher)
 - https://github.com/vim-ruby/vim-ruby (Ruby power tools)
 
-

@@ -51,16 +51,16 @@ nmap <C-L><C-L> :set invrelativenumber<CR>
 set belloff=all
 
 " Setting search
-set hlsearch                            " Searching
+hi Search cterm=NONE
 hi Search ctermbg=Grey
 hi Search ctermfg=NONE
-hi Search cterm=NONE
 nnoremap <cr> :noh<CR><CR>:<backspace>
+set hlsearch                            " Searching
 
 " avoid mistyping commands
+command! Bd bd
 command! W w
 command! Wq wq
-command! Bd bd
 
 let loaded_matchparen = 1
 
@@ -74,26 +74,28 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
-Plugin 'garbas/vim-snipmate'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-rails.git'
-Plugin 'tomasr/molokai'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-surround'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'ervandew/supertab'
-Plugin 'janko-m/vim-test'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-dispatch'
+Plugin 'chr4/nginx.vim'
+Plugin 'christoomey/vim-sort-motion'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tomlion/vim-solidity'
+Plugin 'ervandew/supertab'
+Plugin 'garbas/vim-snipmate'
+Plugin 'gmarik/vundle'
+Plugin 'honza/vim-snippets'
+Plugin 'janko-m/vim-test'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'chr4/nginx.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tomasr/molokai'
+Plugin 'tomlion/vim-solidity'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails.git'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 
@@ -115,14 +117,14 @@ let mapleader=","
 nmap <Leader><CR> :nohlsearch<cr>
 
 " Buffer switching
-map <leader>p :bp<CR> " ,p previous buffer
-map <leader>n :bn<CR> " ,n next buffer
-map <leader>d :bd<CR> " ,d delete buffer
 map <Leader>c :call <CR>
+map <leader>d :bd<CR> " ,d delete buffer
+map <leader>n :bn<CR> " ,n next buffer
+map <leader>p :bp<CR> " ,p previous buffer
+map <leader>r :r<cr> " \t to jump to related file
+map <leader>t :A<CR> " \t to jump to test file
 nmap <silent> <leader>c :TestFile<CR>
 nmap <silent> <leader>s :TestNearest<CR>
-map <leader>t :A<CR> " \t to jump to test file
-map <leader>r :r<cr> " \t to jump to related file
 
 " Ctags
 nnoremap <leader>. :CtrlPTag<cr>
@@ -145,19 +147,11 @@ nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
 
-" Commenting blocks of code.
-autocmd FileType c,cpp,java,go    let b:comment_leader = '// '
-autocmd FileType sh,ruby,python   let b:comment_leader = '# '
-autocmd FileType conf,fstab       let b:comment_leader = '# '
-autocmd FileType tex              let b:comment_leader = '% '
-autocmd FileType mail             let b:comment_leader = '> '
-autocmd FileType vim              let b:comment_leader = '" '
-
 " Close QuickFix Files List after selecting
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
-noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+" noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+" noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 " The Silver Searcher
 if executable('ag')
