@@ -96,6 +96,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'christoomey/vim-system-copy'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-entire'
+Plugin 'kana/vim-textobj-line'
 
 call vundle#end()
 
