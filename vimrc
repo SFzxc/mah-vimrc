@@ -72,6 +72,12 @@ let Tlist_Ctags_Cmd='/location/ctags'
 nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
 set nocompatible
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'MarcWeber/vim-addon-mw-utils'
