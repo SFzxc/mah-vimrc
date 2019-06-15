@@ -11,6 +11,9 @@ set autoread
 " Show cmd normal
 set showcmd
 
+" Jump between pair keywords by %
+runtime macros/matchit.vim
+
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
@@ -68,43 +71,42 @@ let Tlist_Ctags_Cmd='/location/ctags'
 " Ruby hash syntax conversion
 nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
 set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'chr4/nginx.vim'
-Plugin 'christoomey/vim-sort-motion'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ervandew/supertab'
-Plugin 'garbas/vim-snipmate'
-Plugin 'gmarik/vundle'
-Plugin 'honza/vim-snippets'
-Plugin 'janko-m/vim-test'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tomasr/molokai'
-Plugin 'tomlion/vim-solidity'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails.git'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'christoomey/vim-system-copy'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'kana/vim-textobj-line'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'chr4/nginx.vim'
+Plug 'christoomey/vim-sort-motion'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ervandew/supertab'
+Plug 'garbas/vim-snipmate'
+Plug 'gmarik/vundle'
+Plug 'honza/vim-snippets'
+Plug 'janko-m/vim-test'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tomasr/molokai'
+Plug 'tomlion/vim-solidity'
+Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
+Plug 'christoomey/vim-system-copy'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-line'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'godlygeek/tabular' "alignment
+Plug 'AndrewRadev/splitjoin.vim'
 
-call vundle#end()
-
-filetype plugin indent on
+call plug#end()
 
 " open NERDTree automatically when vim starts up on opening a directory
 " autocmd StdinReadPre * let s:std_in=1
